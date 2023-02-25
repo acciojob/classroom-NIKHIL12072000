@@ -3,6 +3,13 @@ package com.driver;
 public class Student {
 
     private String name;
+
+    public Student(String name, int age, double averageScore) {
+        this.name = name;
+        this.age = age;
+        this.averageScore = averageScore;
+    }
+
     private int age;
 
     public String getName() {

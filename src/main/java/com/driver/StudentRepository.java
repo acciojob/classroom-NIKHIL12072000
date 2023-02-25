@@ -9,7 +9,7 @@ public class StudentRepository {
 
     HashMap<String, Student> studentHashMap;
     HashMap<String, Teacher> teacherHashMap;
-    HashMap<String, ArrayList<String>> studentTeacherMap;
+    HashMap<String, List<String>> studentTeacherMap;
 
     StudentRepository(){
         studentHashMap=new HashMap<>();
@@ -28,7 +28,14 @@ public class StudentRepository {
     }
 
     public void addStudentTeacherPair(String student, String teacher) {
-        studentTeacherMap.get(teacher).add(student);
+        if(studentHashMap.containsKey(student) && teacherHashMap.containsKey(teacher)){
+            List<String> currentStudents = new ArrayList<>();
+            if(studentTeacherMap.containsKey(teacher)) currentStudents=studentTeacherMap.get(teacher);
+            currentStudents.add(student);
+            Teacher t=getTeacherByName(teacher);
+            t.setNumberOfStudents(t.getNumberOfStudents()+1);
+            studentTeacherMap.put(teacher,currentStudents);
+        }
     }
 
     public Student getStudentByName(String name) {

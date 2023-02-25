@@ -4,6 +4,12 @@ public class Teacher {
 
     private String name;
 
+    public Teacher(String name, int numberOfStudents, int age) {
+        this.name = name;
+        this.numberOfStudents = numberOfStudents;
+        this.age = age;
+    }
+
     private int numberOfStudents;
 
     public String getName() {
